@@ -58,8 +58,7 @@ z-index:1}
 .hosting-info p{margin:0;padding:0;font-size:12px}
   /* Deux variantes de thème overlay : 
   .overlay-dark : fond/overlay gris foncé (#333)
-  .overlay-bright : fond/overlay blanc, avec un overlay semi-transparent (opacity 0.7) 
-  */
+  .overlay-bright : fond/overlay blanc, avec un overlay semi-transparent (opacity 0.7)   */
 .overlay-dark{background-color:#333}
 .overlay-dark:before{background-color:#333}
 .overlay-bright{background-color:white}
@@ -75,28 +74,24 @@ color:black;padding:0.5em;font-size:10px;text-transform:uppercase}
     augmente la taille de `h1
     listes sans limite de largeur max
     .page ne descend pas sous 300px
-    plus de padding sur le conteneur.
-  */
+    plus de padding sur le conteneur. */
 @media screen and (max-width: 640px){body.debug:after{content:"small"}h1{font-size:2em}ul,ol
 {max-width:none}.page{min-width:300px}.page .container{padding:3em}}
   /* Sur écran moyen :
-    affiche “medium” dans le badge debug.
-  */
+    affiche “medium” dans le badge debug.  */
 @media screen and (min-width: 641px) and (max-width: 1199px),(min-height:500px) and (max-height:
 1199px)
   {
     body.debug:after{content:"medium"}
   }
   /*Sur grand écran :
-    affiche “large”.
-  */
+    affiche “large”.  */
 @media screen and (min-width: 1200px){body.debug:after{content:"large"}}
    /*Cache .fallback-bg à l’intérieur de .page (probablement un élément de secours). */
 .page .fallback-bg{display:none}
   /*Si le body a une classe .ie8 (donc détection IE8) :
 
-    montre .fallback-bg en arrière-plan absolu couvrant toute la page.
-  */
+    montre .fallback-bg en arrière-plan absolu couvrant toute la page. */
 .ie8 .page .fallback-bg{display:block;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;
 height:100%;max-width:inherit;z-index:0}
 </style>
