@@ -94,63 +94,121 @@ color:black;padding:0.5em;font-size:10px;text-transform:uppercase}
 height:100%;max-width:inherit;z-index:0}
 
 /*mise en place des infobulle "pleiades"*/
-.diamond-circles{
-  --circle-size:100px;   /* taille du cercle */
-  --diamond-half:200px; /* distance du centre jusqu’à un côté du losange (px) */
-  --offset-y:45px;       /* pour monter/descendre le tout (+ ou -) */
-  --color:#ffffff;      /* couleur de remplissage */
-  --stroke:15px;         /* épaisseur bordure */
-  --stroke-color:#000;  /* couleur bordure */
-
+.diamond-circles
+{
   position:absolute;
-  left:55%;
-  top:50%;
-  transform:translate(-50%,-50%) translateY(var(--offset-y));
-  width:calc(var(--diamond-half) * 2);
-  height:calc(var(--diamond-half) * 2);
+  inset:0;
   pointer-events:none;
+  z-index:2;
 }
 
-.diamond-circles .c{
+.diamond-circles .c
+{
   position:absolute;
-  width:var(--circle-size);
-  height:var(--circle-size);
+  transform: translate(-50%, -50%);
   border-radius:50%;
   background:transparent;
-  border:var(--stroke) solid var(--stroke-color); /*None si transparent*/
+  width:100px;
+  height:100px;
+  border:15px solid #000;
+
 }
 
-.diamond-circles .c1{left:59%;top:0;translate:-50% 15%;}
-.diamond-circles .c2{left:100%;top:50%;translate:-100% -50%;}
-.diamond-circles .c3{left:50%;top:100%;translate:-65% -145%;}
-.diamond-circles .c4{left:0;top:50%;translate:0 -50%;}
-.diamond-circles .c5{left:-15%;top:55%;translate:-100% -50%;}
 </style>
 </head>
 <body>
-<div id="page" class="page  ">
-	<div class="container">
+<div id="page" class="page">
+  <div class="diamond-circles" aria-hidden="true">
+    <div class="c c1"></div>
+    <div class="c c2"></div>
+    <div class="c c3"></div>
+    <div class="c c4"></div>
+    <div class="c c5"></div>
+  </div>
+
+  <div class="container">
+    <div class="content">
 		<div class="content"><h1><span style="text-decoration: underline;"><strong><em>Batfly Overdream</em></strong></span></h1>
 			<p>Ce site est actuellement en construction.</p>
 			<p>Bon, ça, c'est fait. Maintenant, au boulot !<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
-			<div class="diamond-circles" aria-hidden="true">
-				<span class="c c1"></span>
-				<span class="c c2"></span>
-				<span class="c c3"></span>
-				<span class="c c4"></span>
-				<span class="c c5"></span>
-			</div>
-			<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><strong>Image de fond: Pleiades. </strong></p>
-			<p><strong>Credit:&nbsp;</strong>Davide De Martin &amp; the ESA/ESO/NASA Photoshop FITS Liberator</p>
-		</div>
-		<div class="social-links">
-		</div>
-		<div class="hosting-info">
+    </div>
+    <div class="social-links"></div>
+    <div class="hosting-info">
 			<p>Mon site est hébergé dans <a href="https://ecologie.infomaniak.com/" target="_blank">le datacenter le plus écologique de Suisse</a>.</p>
 			<p>Mon site est développé dans GitHub Page</p>
-			
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
+
+<script>
+(function () 
+{
+  const page = document.getElementById('page');
+  const bgUrl = getComputedStyle(page).backgroundImage;
+  const m = bgUrl.match(/url\(["']?(.*?)["']?\)/);
+  if (!m) return;
+
+  const url = m[1];
+
+  const circles = {
+    c1: document.querySelector('.diamond-circles .c1'),
+    c2: document.querySelector('.diamond-circles .c2'),
+    c3: document.querySelector('.diamond-circles .c3'),
+    c4: document.querySelector('.diamond-circles .c4'),
+    c5: document.querySelector('.diamond-circles .c5'),
+  };
+
+  const points = {
+    c1: { x: 451, y: 787 },
+    c2: { x: 651, y: 763 },
+    c3: { x: 790, y: 845 },
+    c4: { x: 850, y: 627 },
+    c5: { x: 963, y: 762 },
+  };
+
+  const img = new Image();
+  img.src = url;
+
+  function position() 
+  {
+    if (!img.naturalWidth || !img.naturalHeight) return;
+
+    const containerW = page.clientWidth;
+    const containerH = page.clientHeight;
+
+    const Wimg = img.naturalWidth;
+    const Himg = img.naturalHeight;
+
+    const scale = Math.max(containerW / Wimg, containerH / Himg);
+    const displayW = Wimg * scale;
+    const displayH = Himg * scale;
+
+    const offsetX = (containerW - displayW) / 2;
+    const offsetY = (containerH - displayH) / 2;
+
+    for (const key in circles) 
+	{
+      const el = circles[key];
+      if (!el) continue;
+      const p = points[key];
+      const left = offsetX + p.x * scale;
+      const top = offsetY + p.y * scale;
+
+      el.style.left = left + 'px';
+      el.style.top = top + 'px';
+    }
+  }
+
+  img.onload = () => 
+  {
+    position();
+    window.addEventListener('resize', position);
+  };
+
+  if (img.complete) position();
+})();
+</script>
+
+
 </body>
 </html>
