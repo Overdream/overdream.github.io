@@ -92,23 +92,65 @@ color:black;padding:0.5em;font-size:10px;text-transform:uppercase}
     montre .fallback-bg en arrière-plan absolu couvrant toute la page. */
 .ie8 .page .fallback-bg{display:block;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;
 height:100%;max-width:inherit;z-index:0}
+
+/*mise en place des infobulle "pleiades"*/
+.diamond-circles{
+  --circle-size:100px;   /* taille du cercle */
+  --diamond-half:200px; /* distance du centre jusqu’à un côté du losange (px) */
+  --offset-y:45px;       /* pour monter/descendre le tout (+ ou -) */
+  --color:#ffffff;      /* couleur de remplissage */
+  --stroke:15px;         /* épaisseur bordure */
+  --stroke-color:#000;  /* couleur bordure */
+
+  position:absolute;
+  left:55%;
+  top:50%;
+  transform:translate(-50%,-50%) translateY(var(--offset-y));
+  width:calc(var(--diamond-half) * 2);
+  height:calc(var(--diamond-half) * 2);
+  pointer-events:none;
+}
+
+.diamond-circles .c{
+  position:absolute;
+  width:var(--circle-size);
+  height:var(--circle-size);
+  border-radius:50%;
+  background:transparent;
+  border:var(--stroke) solid var(--stroke-color); /*None si transparent*/
+}
+
+.diamond-circles .c1{left:59%;top:0;translate:-50% 15%;}
+.diamond-circles .c2{left:100%;top:50%;translate:-100% -50%;}
+.diamond-circles .c3{left:50%;top:100%;translate:-65% -145%;}
+.diamond-circles .c4{left:0;top:50%;translate:0 -50%;}
+.diamond-circles .c5{left:-15%;top:55%;translate:-100% -50%;}
 </style>
 </head>
 <body>
 <div id="page" class="page  ">
-<div class="container">
-<div class="content"><h1><span style="text-decoration: underline;"><strong><em>Batfly Overdream</em></strong></span></h1>
-<p>Ce site est actuellement en construction.</p>
-<p>Bon, &ccedil;a, c'est fait. Maintenant, au boulot !<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
-<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><strong>Image de fond: Pleiades. </strong></p>
-<p><strong>Credit:&nbsp;</strong>Davide De Martin &amp; the ESA/ESO/NASA Photoshop FITS Liberator</p></div>
-<div class="social-links">
-</div>
-<div class="hosting-info">
-<p>Mon site est hébergé dans <a href="https://ecologie.infomaniak.com/" target="_blank">le datacenter le plus écologique de Suisse</a>.</p>
-<p>Mon site est développé dans GitHub Page</p>
-</div>
-</div>
+	<div class="container">
+		<div class="content"><h1><span style="text-decoration: underline;"><strong><em>Batfly Overdream</em></strong></span></h1>
+			<p>Ce site est actuellement en construction.</p>
+			<p>Bon, ça, c'est fait. Maintenant, au boulot !<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
+			<div class="diamond-circles" aria-hidden="true">
+				<span class="c c1"></span>
+				<span class="c c2"></span>
+				<span class="c c3"></span>
+				<span class="c c4"></span>
+				<span class="c c5"></span>
+			</div>
+			<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><strong>Image de fond: Pleiades. </strong></p>
+			<p><strong>Credit:&nbsp;</strong>Davide De Martin &amp; the ESA/ESO/NASA Photoshop FITS Liberator</p>
+		</div>
+		<div class="social-links">
+		</div>
+		<div class="hosting-info">
+			<p>Mon site est hébergé dans <a href="https://ecologie.infomaniak.com/" target="_blank">le datacenter le plus écologique de Suisse</a>.</p>
+			<p>Mon site est développé dans GitHub Page</p>
+			
+		</div>
+	</div>
 </div>
 </body>
 </html>
