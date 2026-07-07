@@ -114,16 +114,52 @@ height:100%;max-width:inherit;z-index:0}
 
 }
 
+.diamond-circles .label
+{
+  position:absolute;
+  left:50%;
+  bottom:110%;
+  transform:translateX(-50%);
+  margin-bottom:8px;
+
+  color:#fff;
+  font-size:20px;
+  white-space:nowrap;
+
+  /* optionnel */
+  text-shadow:0 3px 1px rgba(0,0,0,.6);
+}  
 </style>
 </head>
+
 <body>
 <div id="page" class="page">
   <div class="diamond-circles" aria-hidden="true">
-    <div class="c c1"></div>
-    <div class="c c2"></div>
-    <div class="c c3"></div>
-    <div class="c c4"></div>
-    <div class="c c5"></div>
+    <div class="c c1">
+	    <span class="label">Projet 1</span>
+		<div class="tip" role="tooltip">Infobulle 1
+		</div> <!-- optionnel si tu as des infobulles -->
+	</div>
+    <div class="c c2">
+		<span class="label">Projet 2</span>
+		<div class="tip" role="tooltip">Infobulle 2
+		</div> <!-- optionnel si tu as des infobulles -->
+	</div>
+    <div class="c c3">
+		<span class="label">Projet 3</span>
+		<div class="tip" role="tooltip">Infobulle 3
+		</div> <!-- optionnel si tu as des infobulles -->
+	</div>
+    <div class="c c4">
+		<span class="label">Projet 4</span>
+		<div class="tip" role="tooltip">Infobulle 4
+		</div> <!-- optionnel si tu as des infobulles -->
+	</div>
+    <div class="c c5">
+		<span class="label">Projet 5</span>
+		<div class="tip" role="tooltip">Infobulle 5
+		</div> <!-- optionnel si tu as des infobulles -->
+	</div>
   </div>
 
   <div class="container">
