@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet 2: TEST</title>
+  <style>
+    body{
+      margin:0;
+      padding:10px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#006;
+      color:#FFF;
+    }
+
+    h1{
+      font-size:18px;
+	  text-align:center;
+      margin:0 0 0px 0;
+    }
+
+    .center-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:6px 0 2px;
+    }
+
+    svg{ display:block; }
+    .label-row{
+      display:flex;
+      flex-direction:column;
+      gap:0px;
+      margin-top:1px;
+    }
+
+    .legend{
+      display:flex;
+	  justify-content:center;
+      gap:3px;
+      align-items:center;
+      font-size:13px;
+      color:#FFF;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:3px;
+      background: linear-gradient(90deg, #4f46e5, #22c55e);
+      flex:0 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Projet 1 — TEST</h1>
+
+  <div class="center-wrap">
+    <svg id="ringsSvg" width="150" height="150" viewBox="0 0 200 200" role="img" aria-label="Avancement">
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#4f46e5"></stop>
+          <stop offset="100%" stop-color="#22c55e"></stop>
+        </linearGradient>
+      </defs>
+
+      <!-- Anneau 1 (extérieur) -->
+      <circle class="bg" cx="110" cy="110" r="80"></circle>
+      <circle class="prog ring1" cx="110" cy="110" r="80"></circle>
+
+      <!-- Anneau 2 (milieu) -->
+      <circle class="bg" cx="110" cy="110" r="60"></circle>
+      <circle class="prog ring2" cx="110" cy="110" r="60"></circle>
+
+      <!-- Anneau 3 (intérieur) -->
+      <circle class="bg" cx="110" cy="110" r="40"></circle>
+      <circle class="prog ring3" cx="110" cy="110" r="40"></circle>
+
+      <style>
+        .bg{
+          fill:none;
+          stroke:#eee;
+          stroke-width:14;
+        }
+        .prog{
+          fill:none;
+          stroke:url(#grad);
+          stroke-width:14;
+          stroke-linecap:round;
+          transform: rotate(-90deg);
+          transform-origin: 110px 110px;
+        }
+      </style>
+
+      <!-- Texte central -->
+      <text id="centerText" x="110" y="112" text-anchor="middle"
+            font-size="18" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+            fill="#FFF" font-weight="600">—</text>
+    </svg>
+  </div>
+
+  <div class="label-row">
+    <div class="legend"><span class="swatch"></span> Conception</div>
+    <div class="legend"><span class="swatch"></span> Développement</div>
+    <div class="legend"><span class="swatch"></span> Tests</div>
+  </div>
+
+  <script>
+    // Modifie ces valeurs selon tes données
+    const values = {
+      ring1: 72, // extérieur
+      ring2: 45, // milieu
+      ring3: 20  // intérieur
+    };
+
+    const centerText = document.getElementById("centerText");
+    // Exemple: afficher la moyenne au centre (tu peux changer)
+    const avg = Math.round((values.ring1 + values.ring2 + values.ring3) / 3);
+    centerText.textContent = avg + "%";
+
+    document.querySelectorAll(".prog").forEach(prog => {
+      const ringClass = prog.classList.contains("ring1") ? "ring1"
+                      : prog.classList.contains("ring2") ? "ring2"
+                      : "ring3";
+
+      const percent = values[ringClass];
+      const r = Number(prog.getAttribute("r"));
+      const circumference = 2 * Math.PI * r;
+
+      prog.style.strokeDasharray = `${circumference}`;
+      prog.style.strokeDashoffset = `${circumference * (1 - percent / 100)}`;
+    });
+  </script>
+</body>
+</html>

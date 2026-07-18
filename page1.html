@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet 1 : Scrollrack</title>
+  <style>
+    body{
+      margin:0;
+      padding:16px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#000055;
+      color:#FFF;
+    }
+
+    h1{
+      font-size:18px;
+      margin:0 0 12px 0;
+    }
+
+    .bar-group{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .bar{
+      display:grid;
+      grid-template-columns: 120px 1fr 56px;
+      gap:10px;
+      align-items:center;
+    }
+
+    .bar .name{
+      font-size:13px;
+      color:#FFF;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .track{
+      height:12px;
+      background:#eee;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .fill{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, #4f46e5, #22c55e);
+      border-radius:999px;
+    }
+
+    .value{
+      font-size:13px;
+      color:#FFF;
+      text-align:right;
+    }
+
+    /* petite mise en forme optionnelle */
+    .bar + .bar { border-top: 1px solid #f2f2f2; padding-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Projet 1 — Scrollrack</h1>
+
+  <div class="bar-group">
+    <div class="bar">
+      <div class="name">Conception</div>
+      <div class="track"><div class="fill" style="width:5%"></div></div>
+      <div class="value">5%</div>
+    </div>
+
+    <div class="bar">
+      <div class="name">Prototype</div>
+      <div class="track"><div class="fill" style="width:2%"></div></div>
+      <div class="value">2%</div>
+    </div>
+
+    <div class="bar">
+      <div class="name">Finalisation</div>
+      <div class="track"><div class="fill" style="width:0%"></div></div>
+      <div class="value">0%</div>
+    </div>
+  </div>
+
+  <!-- optionnel: ajuster l'iframe si vous avez du contenu dynamique -->
+  <script>
+    // Si besoin plus tard, on pourra poster la hauteur à la page parent (scroll auto).
+  </script>
+</body>
+</html>
