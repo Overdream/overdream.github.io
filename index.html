@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Bienvenue sur flyoverdream.fr</title>
-<meta name="description" content="Ce site est actuellement en construction.">
-<meta name="generator" content="skull: hosting-page-builder, rest is personalized">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="og:url" content="https://flyoverdream.fr/index.html">
-<meta name="og:locale" content="">
-<meta name="og:type" content="website">
-<meta name="og:title" content="Bienvenue sur flyoverdream.fr">
-<meta name="og:description" content="Ce site est actuellement en construction.">
-<meta name="og:updated_time" content="1783299214">
-<link rel="stylesheet" href="https://assets.storage.infomaniak.com/fonts/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Times New Roman', Times, serif">
-<style>
+	<meta charset="UTF-8">
+	<title>Bienvenue sur flyoverdream.fr</title>
+	<meta name="description" content="Ce site est actuellement en construction.">
+	<meta name="generator" content="skull: hosting-page-builder, rest is personalized">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="og:url" content="https://flyoverdream.fr/index.html">
+	<meta name="og:locale" content="">
+	<meta name="og:type" content="website">
+	<meta name="og:title" content="Bienvenue sur flyoverdream.fr">
+	<meta name="og:description" content="Ce site est actuellement en construction.">
+	<meta name="og:updated_time" content="1783299214">
+	<link rel="stylesheet" href="https://assets.storage.infomaniak.com/fonts/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Times New Roman', Times, serif">
+	<style>
   /* Met la hauteur de <html> et <body> à 100% et enlève marges/ padding par défaut. */
 html,body{height:100%;padding:0;margin:0}
   /* Styles principaux du conteneur .page */
@@ -110,8 +110,33 @@ height:100%;max-width:inherit;z-index:0}
   background:transparent;
   width:100px;
   height:100px;
-  border:15px solid #000;
+  border:1px solid #000;
 
+}
+
+.diamond-circles .c{ pointer-events:auto; } /* important pour hover */
+
+.diamond-circles .tip{
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:6px 8px;
+  border-radius:6px;
+  font-size:12px;
+  white-space:nowrap;
+
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .15s;
+  pointer-events:none;
+}
+
+.diamond-circles .c:hover .tip{
+  opacity:1;
+  visibility:visible;
 }
 
 .diamond-circles .label
@@ -137,28 +162,53 @@ height:100%;max-width:inherit;z-index:0}
   <div class="diamond-circles" aria-hidden="true">
     <div class="c c1">
 	    <span class="label">Projet 1</span>
-		<div class="tip" role="tooltip">Infobulle 1
-		</div> <!-- optionnel si tu as des infobulles -->
+		<div class="tip" role="tooltip">
+		<iframe
+			src="page1.html"
+			title="Infobulle 1"
+			loading="lazy">
+		</iframe>
+		</div>		
 	</div>
     <div class="c c2">
 		<span class="label">Projet 2</span>
-		<div class="tip" role="tooltip">Infobulle 2
-		</div> <!-- optionnel si tu as des infobulles -->
+		<div class="tip" role="tooltip">
+			<iframe 
+				src="page2.html"
+				title="Infobulle 2"
+				loading="lazy">
+			</iframe>
+		</div>
 	</div>
     <div class="c c3">
 		<span class="label">Projet 3</span>
-		<div class="tip" role="tooltip">Infobulle 3
-		</div> <!-- optionnel si tu as des infobulles -->
+		<div class="tip" role="tooltip">
+			<iframe 
+				src="page1.html"
+				title="Infobulle 3"
+				loading="lazy">
+			</iframe>
+		</div>
 	</div>
     <div class="c c4">
 		<span class="label">Projet 4</span>
-		<div class="tip" role="tooltip">Infobulle 4
-		</div> <!-- optionnel si tu as des infobulles -->
+		<div class="tip" role="tooltip">
+			<iframe 
+				src="page1.html"
+				title="Infobulle 4"
+				loading="lazy">
+			</iframe>
+		</div>
 	</div>
     <div class="c c5">
 		<span class="label">Projet 5</span>
-		<div class="tip" role="tooltip">Infobulle 5
-		</div> <!-- optionnel si tu as des infobulles -->
+		<div class="tip" role="tooltip">
+			<iframe 
+				src="page1.html"
+				title="Infobulle 5"
+				loading="lazy">
+			</iframe>
+		</div>
 	</div>
   </div>
 
